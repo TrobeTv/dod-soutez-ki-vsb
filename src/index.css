@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scanlines {
+    background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+
+  .noise {
+    background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJTN5MsveZ5S1zCmh0WIXBPCXnlG0e7H4Kfqy43Oyivv4TsuCpnZj-uPRLunSWi8Ra-XB_kQKqXe9K7y0mDCZecaawz26WvWlJL-uT3sZtiNQSMia493vSUCtlIrKUzG_iBgSlSzTw71Iktyt86snhLpIIVSSESnnmSd3JdjWmOQc9ZH7KdJxuzYtHcGOcxYyXKDgDZfNEZK86ii722zpygCBb6KjOWDpHOi2UgWJPgt9aQ1-dUjySQk6mbYmaZfN4l5Z--QOZXUg");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(19, 200, 236, 0.6);
+  }
+
+  .vfd-display {
+    background: linear-gradient(180deg, #162a2e 0%, #101f22 100%);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(19, 200, 236, 0.15);
+  }
+
+  .matrix-bg {
+    background-image: linear-gradient(rgba(19, 200, 236, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19, 200, 236, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  }
+}
+
+body {
+  @apply font-display bg-background-dark min-h-[100dvh];
+}
