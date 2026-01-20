@@ -3,7 +3,7 @@ services:
     build:
       context: .
       args:
-        - VITE_TURNSTILE_SITEKEY=${VITE_TURNSTILE_SITEKEY}
+        - VITE_CLOUDFLARE_SITE_KEY=${VITE_CLOUDFLARE_SITE_KEY}
     container_name: dod-soutez-app
     # Port 5173 uvnitř kontejneru
     ports:

@@ -2,11 +2,8 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Definice argumentů pro build (musí začínat VITE_)
-ARG VITE_TURNSTILE_SITEKEY
-
-# Převod argumentů na environmentální proměnné pro proces buildu
-ENV VITE_TURNSTILE_SITEKEY=$VITE_TURNSTILE_SITEKEY
+ARG VITE_CLOUDFLARE_SITE_KEY
+ENV VITE_CLOUDFLARE_SITE_KEY=$VITE_CLOUDFLARE_SITE_KEY
 
 COPY package*.json ./
 RUN npm ci
