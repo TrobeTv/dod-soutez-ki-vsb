@@ -1,44 +1,44 @@
 export const LABS_DATA = [
     {
-        id: 'lab_01',
-        name: 'LAB_01_NETWORK_LAYER',
-        code: '1011',
+        id: 'lab_404',
+        name: 'LAB_404_GRAPHICS',
+        code: '0100',
         animationType: 'verify'
     },
     {
-        id: 'lab_02',
-        name: 'LAB_02_DATA_STRUCTURES',
+        id: 'lab_405',
+        name: 'LAB_405_DATABASES',
         code: '0101',
         animationType: 'verify'
     },
     {
-        id: 'lab_03',
-        name: 'LAB_03_ENCRYPTION',
-        code: '1110',
+        id: 'lab_406',
+        name: 'LAB_406_CRYPTO',
+        code: '0110',
         animationType: 'verify'
     },
     {
-        id: 'lab_04',
-        name: 'LAB_04_AI_CORE',
-        code: '0011',
+        id: 'lab_407',
+        name: 'LAB_407_HARDWARE',
+        code: '0111',
         animationType: 'verify'
     },
     {
-        id: 'lab_05',
-        name: 'LAB_05_WEB_SYSTEMS',
-        code: '1100',
+        id: 'lab_408',
+        name: 'LAB_408_GAMES',
+        code: '1000',
         animationType: 'verify'
     },
     {
-        id: 'lab_06',
-        name: 'LAB_06_EMBEDDED',
+        id: 'lab_409',
+        name: 'LAB_409_CYBERSECURITY',
         code: '1001',
         animationType: 'verify'
     },
     {
-        id: 'lab_07',
-        name: 'LAB_07_QUANTUM',
-        code: '0111',
+        id: 'lab_410',
+        name: 'LAB_410_VR',
+        code: '1010',
         animationType: 'verify'
     }
 ];

@@ -11,13 +11,16 @@ const TutorialOverlay = ({ onClose }) => (
                     <path d="M20,4H4C2.89,4,2,4.89,2,6v12c0,1.11,0.89,2,2,2h16c1.11,0,2-0.89,2-2V6C22,4.89,21.11,4,20,4z M20,18H4V8h16V18z M4,6V6 h16v1.17L4,6z M7.5,14H6v-3h1.5v0.5h1V11h1v3.5L7.5,14z M11,14h-1.5v-3h1.5v0.5h1V11h-2v3.5H11V14z M14,14h-1.5v-3h1.5v0.5h1V11h-2 v3.5H14V14z" />
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10zm-2-1h-6v-2h6v2zM7.5 17l-1.41-1.41L8.67 13l-2.59-2.59L7.5 9l4 4-4 4z" />
                 </svg>
-                INIT_SEQUENCE
+                DNY_OTEVŘENÝCH_DVEŘÍ
             </h2>
             <div className="space-y-3 text-sm text-primary/80 font-mono leading-relaxed">
-                <p>&gt; VÍTEJ AGENTE.</p>
-                <p>&gt; MISE: NAJDI 7 BINÁRNÍCH KÓDŮ UKRYTÝCH V LABORATOŘÍCH VE 4. PATŘE POD QR KÓDEM.</p>
-                <p>&gt; AKCE: VLOŽ 4-BIT SEKVENCI KTERÁ SE TI ZOBRAZÍ PO NAČTENÍ QR KÓDU ABY JSI OBEŠEL ZABEZPEČNÍ.</p>
-                <p>&gt; VAROVÁNÍ: NEZAPOMEŇ ODESLAT SVŮJ KÓD DO SOUTĚŽNÍHO DOTAZNÍKU PO TOM CO NAJDEŠ VŠECHNY KÓDY.</p>
+                <p>&gt; VÍTEJ NA INFORMATICE.</p>
+                <p>&gt; <b>MISE:</b> NAJDI 7 BINÁRNÍCH SEKVENCÍ UKRYTÝCH V NAŠICH LABORATOŘÍCH VE 4. PATŘE.</p>
+                <p>&gt; <b>AKCE:</b> VLOŽ 4 ČÍSLA BINÁRNÍ SEKVENCE, KTERÁ SE TI ZOBRAZÍ PO NAČTENÍ QR KÓDU.</p>
+                <p>&gt; <b>UPOZORNĚNÍ:</b> PRO ZAŘAZENÍ DO SOUTĚŽE MUSÍŠ TAKÉ SLEDOVAT INSTAGRAM KATEDRY INFORMATIKY ki.vsb.cz</p>
+                <p>&gt; <b>FINAL:</b> PO ODEMČENÍ VŠECH 7 LABORATOŘÍ SE TI ZOBRAZÍ KÓD, KTERÝ NAZEPOMEŇ VLOŽIT DO SOUTĚŽNÍHO DOTAZNÍKU.</p>
+                <p>&gt; ODKAZ NA DOTAZNÍK NAJDEŠ POD FINÁLNÍM KÓDEM.</p>
+                {/* <p>&gt; UPOZORNĚNÍ: MUSÍŠ SLEDOVAT INSTAGRAM KATEDRY INFORMATIKY ki.vsb.cz PRO TO ABY TVŮJ SOUTĚŽNÍ KÓD BYL PLATNÝ</p> */}
             </div>
             <button
                 onClick={onClose}
@@ -150,7 +153,7 @@ const BinaryHunt = () => {
                     </svg>
                 </div>
                 <h2 className="text-white text-xs font-bold leading-tight tracking-widest flex-1 px-3 uppercase">
-                    KI_VŠB // SYS_PROTOCOL v23.1.
+                    KI_VŠB // SYS_PROTOCOL v23.1.24.1.
                 </h2>
                 <div className="flex w-10 items-center justify-end">
                     <div className="flex items-center gap-1">

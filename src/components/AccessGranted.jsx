@@ -61,9 +61,41 @@ const AccessGranted = () => {
                     </h2>
                 </div>
 
+
+
+                {/* Stats & Completion Matrix */}
+                <div className="flex flex-col gap-4">
+                    <div className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-[#234248]/40 border border-primary/30">
+                        <div className="flex justify-center items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-primary">
+                                <path fillRule="evenodd" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" clipRule="evenodd" />
+                            </svg>
+                            <p className="text-primary/70 text-xs font-bold leading-normal tracking-tighter uppercase text-center">Decryption Status</p>
+
+                        </div>
+                        <p className="text-white tracking-light text-4xl font-bold leading-tight text-center">100%</p>
+                        <div className="flex items-center justify-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-[#0bda54]">
+                                <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
+                            </svg>
+                            <p className="text-[#0bda54] text-xs font-bold leading-normal uppercase">All Labs Verified</p>
+                        </div>
+                    </div>
+
+                    {/* PageIndicators as Lab Completion Grid */}
+                    <div className="flex flex-col items-center gap-3 py-4 bg-primary/5 rounded-lg border border-primary/10">
+                        <p className="text-primary/60 text-[10px] uppercase tracking-widest font-bold">Lab Integrity Checks (7/7)</p>
+                        <div className="flex w-full flex-row items-center justify-center gap-4">
+                            {[...Array(7)].map((_, i) => (
+                                <div key={i} className="h-3 w-3 rounded-sm bg-primary shadow-[0_0_8px_#13c8ec]"></div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
                 {/* Verification Token Section */}
                 <div className="flex flex-col gap-2 p-6 bg-[#1a2e33]/50 rounded-lg border border-primary/40 shadow-[0_0_15px_rgba(19,200,236,0.1)] text-center animate-pulse-slow">
-                    <p className="text-primary/70 text-xs font-bold uppercase tracking-widest">Verification Token</p>
+                    <p className="text-primary/70 text-m font-bold uppercase tracking-widest">tvůj unikátní kód</p>
                     <div
                         onClick={handleCopy}
                         className="flex items-center justify-center gap-3 cursor-pointer group hover:bg-white/5 p-2 rounded transition-colors relative"
@@ -88,41 +120,12 @@ const AccessGranted = () => {
                     </p>
                 </div>
 
-                {/* Stats & Completion Matrix */}
-                <div className="flex flex-col gap-4">
-                    <div className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 bg-[#234248]/40 border border-primary/30">
-                        <div className="flex justify-between items-center">
-                            <p className="text-primary/70 text-xs font-bold leading-normal tracking-tighter uppercase">Decryption Status</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-primary">
-                                <path fillRule="evenodd" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" clipRule="evenodd" />
-                            </svg>
-                        </div>
-                        <p className="text-white tracking-light text-4xl font-bold leading-tight">100%</p>
-                        <div className="flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-4 text-[#0bda54]">
-                                <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-                            </svg>
-                            <p className="text-[#0bda54] text-xs font-bold leading-normal uppercase">All Labs Verified</p>
-                        </div>
-                    </div>
-
-                    {/* PageIndicators as Lab Completion Grid */}
-                    <div className="flex flex-col items-center gap-3 py-4 bg-primary/5 rounded-lg border border-primary/10">
-                        <p className="text-primary/60 text-[10px] uppercase tracking-widest font-bold">Lab Integrity Checks (7/7)</p>
-                        <div className="flex w-full flex-row items-center justify-center gap-4">
-                            {[...Array(7)].map((_, i) => (
-                                <div key={i} className="h-3 w-3 rounded-sm bg-primary shadow-[0_0_8px_#13c8ec]"></div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
                 {/* Uplink Button Section */}
                 <div className="flex-1 flex flex-col justify-end pb-8">
                     <div className="relative group">
                         <div className="absolute -inset-1 bg-primary rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                         <a
-                            href="https://forms.google.com" // Placeholder, user said "google form addres" but didn't give the URL. Assuming they want me to use the placeholder or if I missed it.
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScXQY4cYNmVWDFaF8NU2mPvwlodx_HZigIwT-237x3QYmCxlA/viewform" // Placeholder, user said "google form addres" but didn't give the URL. Assuming they want me to use the placeholder or if I missed it.
                             // Checking previous messages... user said "lead to the google form addres". 
                             // In BinaryHunt.jsx it was "https://forms.google.com". I will stick with that.
                             target="_blank"
@@ -132,7 +135,7 @@ const AccessGranted = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                                 <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM8 15.01l1.41 1.41L11 14.84V19h2v-4.16l1.59 1.59L16 15.01 12.01 11z" />
                             </svg>
-                            Establish Uplink
+                            ODESLAT ODPOVĚĎ
                         </a>
                         <p className="text-center text-primary/40 text-[10px] mt-4 tracking-widest uppercase">(Submit Competition Data)</p>
                     </div>
