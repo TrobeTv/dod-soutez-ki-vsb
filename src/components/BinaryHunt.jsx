@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { LABS_DATA } from '../config/labs';
 import AccessGranted from './AccessGranted';
+import { Turnstile } from '@marsidev/react-turnstile'
+
+
 
 const TutorialOverlay = ({ onClose }) => (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
@@ -48,6 +51,8 @@ const BinaryHunt = () => {
     const [uiState, setUiState] = useState('idle'); // idle, checking, success, error
     const [lastUnlocked, setLastUnlocked] = useState(null);
     const [showTutorial, setShowTutorial] = useState(!state.tutorialSeen);
+
+    const [token, setToken] = useState(null);
 
     // Persistence Saving
     useEffect(() => {
@@ -144,6 +149,49 @@ const BinaryHunt = () => {
 
             {showTutorial && <TutorialOverlay onClose={handleTutorialClose} />}
 
+            {/* Security Gate Overlay - Full Screen Turnstile */}
+            {!token && (
+                <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-background-dark/98 backdrop-blur-xl p-4 text-center">
+                    <div className="max-w-md w-full border border-primary/30 p-8 rounded-2xl shadow-[0_0_50px_rgba(19,200,236,0.1)] relative overflow-hidden">
+                        {/* Decorative Scanline */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 animate-pulse"></div>
+
+                        <div className="mb-8 space-y-4">
+                            <div className="flex justify-center mb-6">
+                                <div className="p-4 rounded-full bg-primary/10 border border-primary/20 animate-pulse-slow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-12 text-primary">
+                                        <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <h1 className="text-2xl font-bold text-white tracking-[0.2em] uppercase">Security Check</h1>
+                            <p className="text-primary/60 text-sm font-mono tracking-tight">
+                                &gt; UNIDENTIFIED_USER_DETECTED<br />
+                                &gt; VERIFY_HUMAN_PRESENCE_TO_PROCEED
+                            </p>
+                        </div>
+
+                        <div className="flex justify-center min-h-[65px]">
+                            <Turnstile
+                                siteKey={import.meta.env.VITE_CLOUDFLARE_SITE_KEY}
+                                onSuccess={(token) => setToken(token)}
+                                options={{
+                                    theme: 'dark',
+                                    size: 'normal',
+                                }}
+                            />
+                        </div>
+
+                        <div className="mt-8 pt-6 border-t border-white/5">
+                            <p className="text-[10px] text-white/20 uppercase tracking-widest font-mono">
+                                SECURITY_PROTOCOL_V.9.4.1
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Top Bar */}
             <div className="flex items-center bg-background-dark p-4 pb-2 justify-between border-b border-primary/20 z-10 relative">
                 <div className="text-primary flex size-10 shrink-0 items-center justify-center">
@@ -191,7 +239,7 @@ const BinaryHunt = () => {
                 <p className="text-primary/70 text-[10px] font-mono leading-none tracking-tight">
                     &gt; TARGET_NODE: {allUnlocked ? 'SYSTEM_UNLOCKED' : 'ENCRYPTION_LAYER'}<br />
                     &gt; STATUS: {uiState === 'checking' ? 'DECRYPTING...' : uiState === 'success' ? 'ACCESS_GRANTED' : uiState === 'error' ? 'ACCESS_DENIED' : 'WAITING_INPUT'}<br />
-                    &gt; AUTH_REQUIRED: 4-BIT_KEY_SEQUENCE
+                    &gt; AUTH_REQUIRED: {token ? 'Authenticated' : 'Cloudflare Turnstile Pending...'}
                 </p>
             </div>
 
@@ -231,6 +279,8 @@ const BinaryHunt = () => {
                         </div>
                     </div>
                 </div>
+
+
 
                 {/* Unlocked Labs List */}
                 <div className="grid grid-cols-2 gap-3 w-full mt-8">
@@ -291,7 +341,7 @@ const BinaryHunt = () => {
                 <div className="flex gap-4 h-24 mb-4">
                     <button
                         onClick={() => handleInput('0')}
-                        disabled={uiState !== 'idle' || allUnlocked}
+                        disabled={uiState !== 'idle' || allUnlocked || !token}
                         className="flex-1 rounded-xl bg-background-dark border-2 border-primary/40 shadow-[0_4px_0_0_#0a6b7e] active:shadow-none active:translate-y-1 transition-all flex flex-col items-center justify-center group disabled:opacity-50 disabled:active:translate-y-0 disabled:shadow-[0_4px_0_0_#0a6b7e]"
                     >
                         <span className="text-4xl font-bold text-primary glow-text group-active:scale-95">0</span>
@@ -299,7 +349,7 @@ const BinaryHunt = () => {
                     </button>
                     <button
                         onClick={() => handleInput('1')}
-                        disabled={uiState !== 'idle' || allUnlocked}
+                        disabled={uiState !== 'idle' || allUnlocked || !token}
                         className="flex-1 rounded-xl bg-background-dark border-2 border-primary/40 shadow-[0_4px_0_0_#0a6b7e] active:shadow-none active:translate-y-1 transition-all flex flex-col items-center justify-center group disabled:opacity-50 disabled:active:translate-y-0 disabled:shadow-[0_4px_0_0_#0a6b7e]"
                     >
                         <span className="text-4xl font-bold text-primary glow-text group-active:scale-95">1</span>
