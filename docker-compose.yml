@@ -2,6 +2,13 @@ services:
   dod-soutez:
     build: .
     container_name: dod-soutez-app
+    # Port 5173 uvnitř kontejneru
     ports:
-      - "8080:80"
+      - "5173:5173"
+    networks:
+      - cloudflare_net
     restart: always
+
+networks:
+  cloudflare_net:
+    external: true # Předpokládá, že síť vytvoříte nebo ji sdílíte s tunelem
