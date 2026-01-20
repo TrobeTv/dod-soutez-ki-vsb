@@ -1,6 +1,9 @@
 services:
   dod-soutez:
-    build: .
+    build:
+      context: .
+      args:
+        - VITE_TURNSTILE_SITEKEY=${VITE_TURNSTILE_SITEKEY}
     container_name: dod-soutez-app
     # Port 5173 uvnitř kontejneru
     ports:
