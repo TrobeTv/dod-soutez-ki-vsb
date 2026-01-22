@@ -247,7 +247,7 @@ const BinaryHunt = () => {
             <div className="flex-1 flex flex-col items-center justify-start px-6 pt-8 z-10 relative overflow-y-auto pb-64">
                 {/* VFD Display */}
                 <div
-                    className={`w-full vfd-display rounded-xl border p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 ${uiState === 'error' ? 'border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.2)]' :
+                    className={`w-full shrink-0 min-h-[200px] sm:min-h-[240px] vfd-display rounded-xl border p-4 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 ${uiState === 'error' ? 'border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.2)]' :
                         uiState === 'success' ? 'border-green-500/50 shadow-[0_0_20px_rgba(34,197,94,0.2)] animate-pulse' :
                             'border-primary/30'
                         }`}
@@ -255,7 +255,7 @@ const BinaryHunt = () => {
                     <div className="absolute top-2 left-2 text-[10px] text-primary/20 font-mono uppercase">Buffer_v04</div>
                     <div className="absolute bottom-2 right-2 text-[10px] text-primary/20 font-mono uppercase">C-892-X</div>
 
-                    <h1 className={`tracking-[0.5em] text-[56px] font-bold leading-tight text-center glow-text flex items-center h-20 transition-colors ${uiState === 'error' ? 'text-red-500' :
+                    <h1 className={`tracking-widest sm:tracking-[0.5em] text-4xl sm:text-[56px] font-bold leading-tight text-center glow-text flex items-center h-20 transition-colors ${uiState === 'error' ? 'text-red-500' :
                         uiState === 'success' ? 'text-green-500' :
                             'text-primary'
                         }`}>
@@ -263,7 +263,7 @@ const BinaryHunt = () => {
                             <span key={i} className={char === '_' ? 'text-primary/20' : ''}>{char}</span>
                         ))}
                         {buffer.length < 4 && uiState === 'idle' && (
-                            <span className="w-8 h-12 bg-primary/80 ml-2 animate-blink hidden sm:block"></span>
+                            <span className="w-6 h-8 sm:w-8 sm:h-12 bg-primary/80 ml-2 animate-blink hidden sm:block"></span>
                         )}
                     </h1>
 
